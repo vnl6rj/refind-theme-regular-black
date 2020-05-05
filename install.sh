@@ -9,7 +9,7 @@ clear
 
 #Clone the theme
 echo -n "Downloading rEFInd theme Regular to $PWD"
-git clone https://github.com/diddypod/refind-theme-regular.git &> /dev/null
+git clone https://github.com/bobafetthotmail/refind-theme-regular.git &> /dev/null
 echo " - [DONE]"
 
 #Useful formatting tags
