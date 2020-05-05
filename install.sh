@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # An installer for refind-theme-regular by Munlik
 
@@ -61,7 +61,9 @@ case "$size_select" in
         exit 1
         ;;
 esac
-echo "Selected size - big icons: $size_big px, small icons: $size_small px"
+echo
+echo "Selected size - ${bold}big icons: $size_big px, small icons: $size_small px${normal}"
+echo
 
 #Set theme color
 echo "Select a theme color"
@@ -86,8 +88,9 @@ case "$theme_select" in
         exit 1
         ;;
 esac
-echo "Selected theme - $theme_name"
-
+echo
+echo "Selected theme - ${bold}$theme_name${normal}"
+echo
 #Uncomment relevant lines from src/theme.conf
 echo -n "Generating theme file theme.conf"
 cd refind-theme-regular
@@ -119,7 +122,30 @@ echo " - [DONE]"
 
 #Edit refind.conf - remove older themes
 echo -n "Removing old themes from refind.conf"
-sed --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
+echo
+echo
+read -p "Do you have a secondary config file to preserved? (${bold}Y${normal}/n): " config_confirm
+if test -z "$config_confirm";
+then
+    config_confirm="y"
+fi
+case "$config_confirm" in
+    y|Y)
+        read -p "Enter the name of the config file to be preserved in full eg: manual.conf: " configname
+        # Checking for enter key. If so it has the same effect having no files to preserve.
+        if [[ $configname == "" ]]; then 
+	configname='^#'
+	fi
+        #Excludes line with entered config file then ^\s*include matches lines starting with any nuber of spaces and then include.
+        sed --in-place=".bak" "/$configname/! s/^\s*include/# (disabled) include/" "$location"refind.conf
+        ;;
+    n)
+        # ^\s*include matches lines starting with any nuber of spaces and then include.
+        sed --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
+        ;;    
+    *)
+        ;;
+esac
 echo " - [DONE]"
 
 #Edit refind.conf - add new theme
@@ -140,10 +166,8 @@ case "$del_confirm" in
         echo -n "Deleting download"
         rm -r refind-theme-regular
         echo " - [DONE]"
-        break
         ;;
     *)
-        break
         ;;
 esac
 
