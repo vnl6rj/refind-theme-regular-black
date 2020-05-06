@@ -18,7 +18,7 @@ NOTE: this is a fork of munlik's theme since he seems to have abandoned his proj
 
 1. Just paste this command in your terminal and enter your choices.
    ```
-   sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh)"
+   sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh)"
    ```
 2. To further adjust icon size, font size, background color and selector color edit `/boot/efi/EFI/refind/refind-theme-regular/theme.conf` as root/SuperUser.
 
