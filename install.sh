@@ -39,22 +39,18 @@ case "$size_select" in
     1)
         size_big="128"
         size_small="48"
-        break
         ;;
     2)
         size_big="256"
         size_small="96"
-        break
         ;;
     3)
         size_big="384"
         size_small="144"
-        break
         ;;
     4)
         size_big="512"
         size_small="192"
-        break
         ;;
     *)
         echo "Incorrect choice. Exiting."
@@ -76,12 +72,10 @@ case "$theme_select" in
     1)
         theme_name="light"
         theme_path=""
-        break
         ;;
     2)
         theme_name="dark"
         theme_path="_dark"
-        break
         ;;
     *)
         echo "Incorrect choice. Exiting."
