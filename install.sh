@@ -118,10 +118,10 @@ echo " - [DONE]"
 echo -n "Removing old themes from refind.conf"
 echo
 echo
-read -p "Do you have a secondary config file to preserve? (${bold}Y${normal}/n): " config_confirm
+read -p "Do you have a secondary config file to preserve? Default: N (y/${bold}N${normal}): " config_confirm
 if test -z "$config_confirm";
 then
-    config_confirm="y"
+    config_confirm="n"
 fi
 case "$config_confirm" in
     y|Y)
@@ -133,7 +133,7 @@ case "$config_confirm" in
         #Excludes line with entered config file then ^\s*include matches lines starting with any nuber of spaces and then include.
         sed --in-place=".bak" "/$configname/! s/^\s*include/# (disabled) include/" "$location"refind.conf
         ;;
-    n)
+    n|N)
         # ^\s*include matches lines starting with any nuber of spaces and then include.
         sed --in-place=".bak" 's/^\s*include/# (disabled) include/' "$location"refind.conf
         ;;
