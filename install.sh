@@ -9,7 +9,7 @@ clear
 
 #Clone the theme
 echo -n "Downloading rEFInd theme Regular to $PWD"
-git clone https://github.com/bobafetthotmail/refind-theme-regular.git &> /dev/null
+git clone https://github.com/vnl6rj/refind-theme-regular-black.git &> /dev/null
 echo " - [DONE]"
 
 #Useful formatting tags
@@ -61,30 +61,6 @@ echo
 echo "Selected size - ${bold}big icons: $size_big px, small icons: $size_small px${normal}"
 echo
 
-#Set theme color
-echo "Select a theme color"
-read -p "${bold}1: light${normal}, 2: dark: " theme_select
-if test -z "$theme_select";
-then
-    theme_select=1
-fi
-case "$theme_select" in
-    1)
-        theme_name="light"
-        theme_path=""
-        ;;
-    2)
-        theme_name="dark"
-        theme_path="_dark"
-        ;;
-    *)
-        echo "Incorrect choice. Exiting."
-        exit 1
-        ;;
-esac
-echo
-echo "Selected theme - ${bold}$theme_name${normal}"
-echo
 #Uncomment relevant lines from src/theme.conf
 echo -n "Generating theme file theme.conf"
 cd refind-theme-regular
@@ -92,9 +68,9 @@ cp src/theme.conf theme.conf
 sed -i "s/#icons_dir refind-theme-regular\/icons\/$size_big-$size_small/icons_dir refind-theme-regular\/icons\/$size_big-$size_small/" theme.conf
 sed -i "s/#big_icon_size $size_big/big_icon_size $size_big/" theme.conf
 sed -i "s/#small_icon_size $size_small/small_icon_size $size_small/" theme.conf
-sed -i "s/#banner refind-theme-regular\/icons\/$size_big-$size_small\/bg$theme_path.png/banner refind-theme-regular\/icons\/$size_big-$size_small\/bg$theme_path.png/" theme.conf
-sed -i "s/#selection_big refind-theme-regular\/icons\/$size_big-$size_small\/selection$theme_path-big.png/selection_big refind-theme-regular\/icons\/$size_big-$size_small\/selection$theme_path-big.png/" theme.conf
-sed -i "s/#selection_small refind-theme-regular\/icons\/$size_big-$size_small\/selection$theme_path-small.png/selection_small refind-theme-regular\/icons\/$size_big-$size_small\/selection$theme_path-small.png/" theme.conf
+sed -i "s/#banner refind-theme-regular\/icons\/$size_big-$size_small\/bg.png/banner refind-theme-regular\/icons\/$size_big-$size_small\/bg.png/" theme.conf
+sed -i "s/#selection_big refind-theme-regular\/icons\/$size_big-$size_small\/selection-big.png/selection_big refind-theme-regular\/icons\/$size_big-$size_small\/selection-big.png/" theme.conf
+sed -i "s/#selection_small refind-theme-regular\/icons\/$size_big-$size_small\/selection-small.png/selection_small refind-theme-regular\/icons\/$size_big-$size_small\/selection-small.png/" theme.conf
 cd ..
 echo " - [DONE]"
 
