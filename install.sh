@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# An installer for refind-theme-regular by Munlik
+# An installer for refind-theme-regular-black by vnl6rj, forked from Munlik
 
 #Check if root
 [[ $EUID -ne 0 ]] && echo "This script must be run as root." && exit 1
@@ -8,9 +8,9 @@
 clear
 
 #Clone the theme
-echo -n "Downloading rEFInd theme Regular to $PWD"
-git clone https://github.com/vnl6rj/refind-theme-regular-black.git &> /dev/null
-echo " - [DONE]"
+# echo -n "Downloading rEFInd theme Regular to $PWD"
+# git clone https://github.com/vnl6rj/refind-theme-regular-black.git &> /dev/null
+# echo " - [DONE]"
 
 #Useful formatting tags
 bold=$(tput bold)
@@ -63,31 +63,31 @@ echo
 
 #Uncomment relevant lines from src/theme.conf
 echo -n "Generating theme file theme.conf"
-cd refind-theme-regular
+cd refind-theme-regular-black
 cp src/theme.conf theme.conf
-sed -i "s/#icons_dir refind-theme-regular\/icons\/$size_big-$size_small/icons_dir refind-theme-regular\/icons\/$size_big-$size_small/" theme.conf
+sed -i "s/#icons_dir refind-theme-regular-black\/icons\/$size_big-$size_small/icons_dir refind-theme-regular-black\/icons\/$size_big-$size_small/" theme.conf
 sed -i "s/#big_icon_size $size_big/big_icon_size $size_big/" theme.conf
 sed -i "s/#small_icon_size $size_small/small_icon_size $size_small/" theme.conf
-sed -i "s/#banner refind-theme-regular\/icons\/$size_big-$size_small\/bg.png/banner refind-theme-regular\/icons\/$size_big-$size_small\/bg.png/" theme.conf
-sed -i "s/#selection_big refind-theme-regular\/icons\/$size_big-$size_small\/selection-big.png/selection_big refind-theme-regular\/icons\/$size_big-$size_small\/selection-big.png/" theme.conf
-sed -i "s/#selection_small refind-theme-regular\/icons\/$size_big-$size_small\/selection-small.png/selection_small refind-theme-regular\/icons\/$size_big-$size_small\/selection-small.png/" theme.conf
+sed -i "s/#banner refind-theme-regular-black\/icons\/$size_big-$size_small\/bg.png/banner refind-theme-regular-black\/icons\/$size_big-$size_small\/bg.png/" theme.conf
+sed -i "s/#selection_big refind-theme-regular-black\/icons\/$size_big-$size_small\/selection-big.png/selection_big refind-theme-regular-black\/icons\/$size_big-$size_small\/selection-big.png/" theme.conf
+sed -i "s/#selection_small refind-theme-regular-black\/icons\/$size_big-$size_small\/selection-small.png/selection_small refind-theme-regular-black\/icons\/$size_big-$size_small\/selection-small.png/" theme.conf
 cd ..
 echo " - [DONE]"
 
 #Clean up
 echo -n "Removing unused directories"
-rm -rf refind-theme-regular/{src,.git}
-rm -rf refind-theme-regular/install.sh
+rm -rf refind-theme-regular-black/{src,.git}
+rm -rf refind-theme-regular-black/install.sh
 echo " - [DONE]"
 
 #Remove previous installs
 echo -n "Deleting older installed versions (if any)"
-rm -rf "$location"{regular-theme,refind-theme-regular}
+rm -rf "$location"{regular-theme,refind-theme-regular-black}
 echo " - [DONE]"
 
 #Copy theme setup folders
 echo -n "Copying theme to $location"
-cp -r refind-theme-regular "$location"
+cp -r refind-theme-regular-black "$location"
 echo " - [DONE]"
 
 #Edit refind.conf - remove older themes
@@ -122,7 +122,7 @@ echo " - [DONE]"
 echo -n "Updating refind.conf"
 echo "
 # Load rEFInd theme Regular
-include refind-theme-regular/theme.conf" | tee -a "$location"refind.conf &> /dev/null
+include refind-theme-regular-black/theme.conf" | tee -a "$location"refind.conf &> /dev/null
 echo " - [DONE]"
 
 #Clean up - remove download
@@ -134,7 +134,7 @@ fi
 case "$del_confirm" in
     y|Y)
         echo -n "Deleting download"
-        rm -r refind-theme-regular
+        rm -r refind-theme-regular-black
         echo " - [DONE]"
         ;;
     *)
