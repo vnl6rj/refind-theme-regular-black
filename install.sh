@@ -8,9 +8,9 @@
 clear
 
 #Clone the theme
-# echo -n "Downloading rEFInd theme Regular to $PWD"
-# git clone https://github.com/vnl6rj/refind-theme-regular-black.git &> /dev/null
-# echo " - [DONE]"
+echo -n "Downloading rEFInd theme Regular to $PWD"
+git clone https://github.com/vnl6rj/refind-theme-regular-black.git &> /dev/null
+echo " - [DONE]"
 
 #Useful formatting tags
 bold=$(tput bold)
