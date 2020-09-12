@@ -1,4 +1,4 @@
-# rEFInd Theme Regular
+# rEFInd Theme Regular Black
 
 A simplistic clean and minimal theme for rEFInd. This version has a fully black background to reduce color changes during boot time, for a smoother boot sequence.
 
@@ -51,7 +51,6 @@ NOTE: this is a fork of [munlik's theme](https://github.com/munlik/refind-theme-
 5. To enable the theme add `include refind-theme-regular-black/theme.conf` at the end of `refind.conf`, and comment out or delete any other themes you might have installed.
    ```
    sudo vi /boot/efi/EFI/refind/refind.conf
-
    ```
 
 **NOTE**: If your not geting your full resolution or have color issues then try disabling the CSM in your UEFI settings.
