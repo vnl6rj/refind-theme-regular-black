@@ -27,7 +27,7 @@ function render_bitmap(){
                     echo "Creating... $OUT_DIR/$filename.png"
                 	$INKSCAPE --export-area-page \
                               --export-dpi=$(($SCALE*$DPI)) \
-                              --export-png="$OUT_DIR/$filename.png" $SRC_DIR/$svgfile> /dev/null \
+                              --export-type="png" --export-filename="$OUT_DIR/$filename.png" $SRC_DIR/$svgfile> /dev/null \
                     &&
                     if [[ -x $OPTIPNG ]]
                         then
